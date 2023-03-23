@@ -30,15 +30,15 @@ app.engine('.hbs',exphdbs.engine({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
 
 app.get("/", (req, res) => {
-  res.render(__dirname + '/views/home.hbs');
+  res.render('home');
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile(__dirname + '/views/about.html');
+  res.render('about');
 });
 
 app.get("/htmlDemo", (req, res) => {
-  res.sendFile(__dirname + '/views/htmlDemo.html');
+  res.render('htmlDemo');
 });
 
 app.get("/students",(req,res)=>{
@@ -55,7 +55,7 @@ app.get("/students",(req,res)=>{
 });
 
 app.get("/studentsadd", (req,res) => {
-  res.sendFile(__dirname +'/views/addStudent.html');
+  res.render('addStudent');
 });
 
 app.post("/studentsadd", (req,res) => {
