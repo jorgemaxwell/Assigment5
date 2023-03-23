@@ -24,9 +24,36 @@ var app = express();
 var HTTP_PORT = process.env.PORT || 8080;
 
 
+app.use(function(req,res,next){
+  let route = req.path.substring(1);
+  app.locals.activeRoute = "/" + (isNaN(route.split('/')[1]) ? route.replace(/\/(?!.*)/, "") : route.replace(/\/(.*)/, ""));    
+  next();
+});
+
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.engine('.hbs',exphdbs.engine({ extname: '.hbs' }));
+app.engine('.hbs',exphdbs.engine({ extname: '.hbs',
+helpers: { 
+    navLink: function(url, options){
+      return '<li' + 
+          ((url == app.locals.activeRoute) ? ' class="nav-item active" ' : ' class="nav-item" ') + 
+          '><a class="nav-link" href="' + url + '">' + options.fn(this) + '</a></li>';
+  }
+  
+  
+  },
+    equal: function (lvalue, rvalue, options) {
+      if (arguments.length < 3)
+          throw new Error("Handlebars Helper equal needs 2 parameters");
+      if (lvalue != rvalue) {
+          return options.inverse(this);
+      } else {
+          return options.fn(this);
+      }
+  }
+  } 
+));
 app.set('view engine', '.hbs');
 
 app.get("/", (req, res) => {
