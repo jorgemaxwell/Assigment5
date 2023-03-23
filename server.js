@@ -18,7 +18,7 @@
 var express = require("express");
 var bodyParser = require('body-parser')
 const collegedata = require('./modules/collegeData.js');
-
+const exphdbs = require('express-handlebars');
 
 var app = express();
 var HTTP_PORT = process.env.PORT || 8080;
@@ -26,10 +26,11 @@ var HTTP_PORT = process.env.PORT || 8080;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.engine('.hbs',exphdbs.engine({ extname: '.hbs' }));
+app.set('view engine', '.hbs');
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + '/views/home.html');
+  res.render(__dirname + '/views/home.hbs');
 });
 
 app.get("/about", (req, res) => {
