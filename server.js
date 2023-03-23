@@ -91,12 +91,6 @@ app.post("/studentsadd", (req,res) => {
   });
 });
 
-app.get("/tas",(req,res)=>{
-  collegedata.getTAs().then(taData => {
-    res.send(taData);
-  });
-});
-
 app.get("/courses",(req,res)=>{
   collegedata.getCourses().then(courseData => {
     res.send(courseData);
