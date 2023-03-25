@@ -6,7 +6,7 @@
 *  of this assignment has been copied manually or electronically from any other source 
 *  (including 3rd party web sites) or distributed to other students.
 * 
-*  Name:  Jorge Barcasnegras Student ID: 156530214 Date: 25-03-2023
+*  Name:  Jorge BarcasnSegras Student ID: 156530214 Date: 25-03-2023
 *
 *  Online (Cyclic) Link: ________________________________________________________
 *
