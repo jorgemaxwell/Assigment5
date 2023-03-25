@@ -1,20 +1,15 @@
 {
-  "name": "assigment5",
-  "version": "1.0.0",
-  "description": "web700 assigment5",
+  "name": "web700-app",
+  "version": "3.0.0",
+  "description": "web 700 assigment 3",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jorgemaxwell/Assigment5.git"
-  },
-  "author": "jorge barcasnegras",
+  "author": "Jorge Barcasnegras",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jorgemaxwell/Assigment5/issues"
-  },
-  "homepage": "https://github.com/jorgemaxwell/Assigment5#readme"
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
