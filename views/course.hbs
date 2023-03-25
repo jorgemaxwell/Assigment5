@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-12">
+        <br><br><br><br>
+
+          {{#each course}}
+        <h2>{{courseDescription}}</h2>
+        <hr />
+        <form>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="courseDescription">Course Code</label>
+                        <input class="form-control" id="courseCode" name="courseCode" type="text" readonly value="{{courseCode}}" />
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label for="courseDescription">Course Description</label>
+                        <input class="form-control" id="courseDescription" name="courseDescription" type="text" readonly value="{{courseDescription}}" />
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </form>
+
+         {{/each}}
+    </div>
+</div>
+

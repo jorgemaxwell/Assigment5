@@ -116,7 +116,74 @@ function getStudentsByCourse (course) {
   });
 };
 
-addStudents = function(studentData){
+
+module.exports.getStudentByNum = function (num) {
+  return new Promise(function (resolve, reject) {
+      var foundStudent = null;
+
+      for (let i = 0; i < dataCollection.students.length; i++) {
+          if (dataCollection.students[i].studentNum == num) {
+              foundStudent = dataCollection.students[i];
+          }
+      }
+      if (!foundStudent) {
+          reject("query returned 0 results"); return;
+      }
+
+      resolve(foundStudent);
+  });
+};
+
+module.exports.getCourseById = function (id){
+  return new Promise((resolve,reject) =>{
+      var foundCourse=[];
+      for(let i=0;i < dataCollection.courses.length;i++)
+      {
+          if(dataCollection.courses[i].courseId==id)
+          {
+              foundCourse.push(dataCollection.courses[i]);
+          }
+      }
+      if(foundCourse.length<=0){
+          reject("query returned 0 results");return;
+      }
+      else{
+          resolve(foundCourse);
+      }
+   });
+}
+
+module.exports.updateStudent = function (studentData) {
+  return new Promise(function (resolve, reject) {
+      var foundStudent = null;
+      var datarow=null;
+
+      for (let i = 0; i < dataCollection.students.length; i++) {
+          if (dataCollection.students[i].studentNum == studentData.studentNum) {
+              foundStudent = dataCollection.students[i];
+              datarow=i}}
+
+              dataCollection.students[datarow].studentNum=studentData.studentNum,
+              dataCollection.students[datarow].firstName=studentData.firstName,
+              dataCollection.students[datarow].lastName=studentData.lastName,
+              dataCollection.students[datarow].email=studentData.email,
+              dataCollection.students[datarow].addressStreet=studentData.addressStreet,
+              dataCollection.students[datarow].addressCity=studentData.addressCity,
+              dataCollection.students[datarow].addressProvince=studentData.addressProvince;
+              dataCollection.students[datarow].TA=studentData.TA;
+              dataCollection.students[datarow].status=studentData.status
+              dataCollection.students[datarow].course=studentData.course
+
+      if (!foundStudent) {
+          reject("query returned 0 results"); return;
+      }
+      console.log(studentData)
+
+      resolve(datarow);
+  });
+};
+
+addstudent = function(studentData){
   return new Promise(function (resolve, reject) {
   studentData.TA = studentData.TA === undefined ? false : true;
 
@@ -131,4 +198,4 @@ addStudents = function(studentData){
 }
 
 
-module.exports = {initialize,getAllStudents, getTAs,getCourses,getStudentByNum, getStudentsByCourse,addStudents}
+module.exports = {initialize,getAllStudents, getTAs,getCourses,getStudentByNum, getStudentsByCourse,addstudent}
