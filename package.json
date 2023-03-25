@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/jorgemaxwell/Assigment5/issues"
   },
-  "homepage": "https://github.com/jorgemaxwell/Assigment5#readme"
+  "homepage": "https://github.com/jorgemaxwell/Assigment5#readme",
+  "dependencies": {
+    "express-handlebars": "^7.0.4",
+    "package-name": "^0.1.0"
+  }
 }
