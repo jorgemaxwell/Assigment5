@@ -46,7 +46,7 @@ function initialize () {
 function getAllStudents () {
   return new Promise((resolve, reject) => {
     if (dataCollection.students.length == 0) {
-      reject("No results returned");
+      reject("this query returned didnt return any result");
       return;
     }
 
@@ -59,7 +59,7 @@ function getTAs () {
     var TAs = dataCollection.students.filter(student => student.TA == true);
 
     if (TAs.length == 0) {
-      reject("No results returned");
+      reject("this query returned didnt return any result");
       return;
     }
 
@@ -70,7 +70,7 @@ function getTAs () {
 function getCourses() {
   return new Promise((resolve, reject) => {
     if (dataCollection.courses.length == 0) {
-      reject("No results returned");
+      reject("this query returned didnt return any result");
       return;
     }
 
@@ -89,7 +89,7 @@ function getStudentByNum (num) {
       }
 
       if (!foundStudent) {
-          reject("query returned 0 results");
+          reject("this query returned didnt return any result");
            return;
       }
 
@@ -108,7 +108,7 @@ function getStudentsByCourse (course) {
       }
 
       if (filteredStudents.length == 0) {
-          reject("query returned 0 results");
+          reject("this query returned didnt return any result");
            return;
       }
 
@@ -127,7 +127,7 @@ module.exports.getStudentByNum = function (num) {
           }
       }
       if (!foundStudent) {
-          reject("query returned 0 results"); return;
+          reject("this query returned didnt return any result"); return;
       }
 
       resolve(foundStudent);
@@ -145,7 +145,7 @@ module.exports.getCourseById = function (id){
           }
       }
       if(foundCourse.length<=0){
-          reject("query returned 0 results");return;
+          reject("this query returned didnt return any result");return;
       }
       else{
           resolve(foundCourse);
@@ -153,7 +153,7 @@ module.exports.getCourseById = function (id){
    });
 }
 
-module.exports.updateStudent = function (studentData) {
+updatestudent = function (studentData) {
   return new Promise(function (resolve, reject) {
       var foundStudent = null;
       var datarow=null;
@@ -175,7 +175,7 @@ module.exports.updateStudent = function (studentData) {
               dataCollection.students[datarow].course=studentData.course
 
       if (!foundStudent) {
-          reject("query returned 0 results"); return;
+          reject("this query returned didnt return any result"); return;
       }
       console.log(studentData)
 
@@ -197,5 +197,4 @@ addstudent = function(studentData){
 
 }
 
-
-module.exports = {initialize,getAllStudents, getTAs,getCourses,getStudentByNum, getStudentsByCourse,addstudent}
+module.exports = {initialize,getAllStudents, getTAs,getCourses,getStudentByNum, getStudentsByCourse,addstudent,updatestudent}
